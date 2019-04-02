@@ -1,0 +1,208 @@
+PGDMP
+)/wdc3pti244ttrg19.5.169.5.128ú00ENCODINGENCODINGSET client_encoding = 'UTF8';
+falseû00
+STDSTRINGS
+STDSTRINGS(SET standard_conforming_strings = 'on';
+falseü00
+SEARCHPATH
+SEARCHPATH8SELECT pg_catalog.set_config('search_path', '', false);
+falseý12621068427dc3pti244ttrg1DATABASE‚CREATE DATABASE "dc3pti244ttrg1" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
+ DROP DATABASE "dc3pti244ttrg1";
+vyeetvkekdldzofalse26151281316publicSCHEMACREATE SCHEMA "public";
+DROP SCHEMA "public";
+vyeetvkekdldzofalse307913249plpgsql	EXTENSIONCCREATE EXTENSION IF NOT EXISTS "plpgsql" WITH SCHEMA "pg_catalog";
+DROP EXTENSION "plpgsql";
+falseþ00EXTENSION "plpgsql"COMMENTBCOMMENT ON EXTENSION "plpgsql" IS 'PL/pgSQL procedural language';
+false1µ12591281317fundingsTABLE2CREATE TABLE "public"."fundings" (
+    "id" integer NOT NULL,
+    "original_resource" "text",
+    "name" "text" NOT NULL,
+    "theme_ids" "text" NOT NULL,
+    "created_at" timestamp without time zone NOT NULL,
+    "updated_at" timestamp without time zone NOT NULL,
+    "deadline" timestamp without time zone,
+    "amount" double precision,
+    "amount_currency" "text",
+    "beneficiary" "text",
+    "description" "text",
+    "requirements" "text",
+    "amount_details" "text",
+    "contact" "text",
+    "organization" "text",
+    "intervention_zones" "text"
+);
+ DROP TABLE "public"."fundings";
+public fundings_id_seqSEQUENCE|CREATE SEQUENCE "public"."fundings_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+*DROP SEQUENCE "public"."fundings_id_seq";
+public 1817ÿ00fundings_id_seqSEQUENCE OWNED BYMALTER SEQUENCE "public"."fundings_id_seq" OWNED BY "public"."fundings"."id";
+public 182·12591281325schema_migrationsTABLENCREATE TABLE "public"."schema_migrations" (
+    "filename" "text" NOT NULL
+);
+)DROP TABLE "public"."schema_migrations";
+public 7¸12591281331searchsTABLEîCREATE TABLE "public"."searchs" (
+    "id" integer NOT NULL,
+    "user_id" integer NOT NULL,
+    "theme_ids" "text" NOT NULL,
+    "created_at" timestamp without time zone NOT NULL,
+    "updated_at" timestamp without time zone NOT NULL
+);
+DROP TABLE "public"."searchs";
+public 7¹12591281337searchs_id_seqSEQUENCE{CREATE SEQUENCE "public"."searchs_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+)DROP SEQUENCE "public"."searchs_id_seq";
+public 718400searchs_id_seqSEQUENCE OWNED BYKALTER SEQUENCE "public"."searchs_id_seq" OWNED BY "public"."searchs"."id";
+public 185º12591281339
+subscriptionsTABLEöCREATE TABLE "public"."subscriptions" (
+    "id" integer NOT NULL,
+    "user_id" integer NOT NULL,
+    "customer_id" "text" NOT NULL,
+    "created_at" timestamp without time zone NOT NULL,
+    "updated_at" timestamp without time zone NOT NULL
+);
+%DROP TABLE "public"."subscriptions";
+public 7»12591281345subscriptions_id_seqSEQUENCECREATE SEQUENCE "public"."subscriptions_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+/DROP SEQUENCE "public"."subscriptions_id_seq";
+public subscriptions_id_seq SEQUENCE OWNED BYWALTER SEQUENCE "public"."subscriptions_id_seq" OWNED BY "public"."subscriptions"."id";
+public 187¼12591281347themesTABLECREATE TABLE "public"."themes" (
+    "id" integer NOT NULL,
+    "original_id" integer,
+    "category_id" integer NOT NULL,
+    "name" "text" NOT NULL,
+    "created_at" timestamp without time zone NOT NULL,
+    "updated_at" timestamp without time zone NOT NULL
+);
+DROP TABLE "public"."themes";
+public 
+themes_id_seqSEQUENCEzCREATE SEQUENCE "public"."themes_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+(DROP SEQUENCE "public"."themes_id_seq";
+public themes_id_seqSEQUENCE OWNED BYIALTER SEQUENCE "public"."themes_id_seq" OWNED BY "public"."themes"."id";
+public usersTABLECREATE TABLE "public"."users" (
+    "id" integer NOT NULL,
+    "email" "text" NOT NULL,
+    "name" "text" NOT NULL,
+    "omniauth" "text" NOT NULL,
+    "created_at" timestamp without time zone NOT NULL,
+    "updated_at" timestamp without time zone NOT NULL
+);
+DROP TABLE "public"."users";
+public users_id_seqSEQUENCEyCREATE SEQUENCE "public"."users_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+'DROP SEQUENCE "public"."users_id_seq";
+public users_id_seqSEQUENCE OWNED BYGALTER SEQUENCE "public"."users_id_seq" OWNED BY "public"."users"."id";
+public visitsTABLEïCREATE TABLE "public"."visits" (
+    "id" integer NOT NULL,
+    "user_id" integer NOT NULL,
+    "funding_id" integer NOT NULL,
+    "created_at" timestamp without time zone NOT NULL,
+    "updated_at" timestamp without time zone NOT NULL
+);
+DROP TABLE "public"."visits";
+public visits_id_seqSEQUENCEzCREATE SEQUENCE "public"."visits_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+(DROP SEQUENCE "public"."visits_id_seq";
+public visits_id_seqSEQUENCE OWNED BYIALTER SEQUENCE "public"."visits_id_seq" OWNED BY "public"."visits"."id";
+public idDEFAULTxALTER TABLE ONLY "public"."fundings" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."fundings_id_seq"'::"regclass");
+@ALTER TABLE "public"."fundings" ALTER COLUMN "id" DROP DEFAULT;
+public idDEFAULTvALTER TABLE ONLY "public"."searchs" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."searchs_id_seq"'::"regclass");
+?ALTER TABLE "public"."searchs" ALTER COLUMN "id" DROP DEFAULT;
+public idDEFAULT‚ALTER TABLE ONLY "public"."subscriptions" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."subscriptions_id_seq"'::"regclass");
+EALTER TABLE "public"."subscriptions" ALTER COLUMN "id" DROP DEFAULT;
+public idDEFAULTtALTER TABLE ONLY "public"."themes" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."themes_id_seq"'::"regclass");
+>ALTER TABLE "public"."themes" ALTER COLUMN "id" DROP DEFAULT;
+public idDEFAULTrALTER TABLE ONLY "public"."users" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."users_id_seq"'::"regclass");
+=ALTER TABLE "public"."users" ALTER COLUMN "id" DROP DEFAULT;
+public idDEFAULTtALTER TABLE ONLY "public"."visits" ALTER COLUMN "id" SET DEFAULT "nextval"('"public"."visits_id_seq"'::"regclass");
+>ALTER TABLE "public"."visits" ALTER COLUMN "id" DROP DEFAULT;
+public fundings
+TABLE DATACOPY "public"."fundings" ("id", "original_resource", "name", "theme_ids", "created_at", "updated_at", "deadline", "amount", "amount_currency", "beneficiary", "description", "requirements", "amount_details", "contact", "organization", "intervention_zones") FROM stdin;
+public fundings_id_seqSEQUENCE SETCSELECT pg_catalog.setval('"public"."fundings_id_seq"', 988, true);
+public schema_migrations
+TABLE DATA;COPY "public"."schema_migrations" ("filename") FROM stdin;
+public searchs
+TABLE DATA_COPY "public"."searchs" ("id", "user_id", "theme_ids", "created_at", "updated_at") FROM stdin;
+public searchs_id_seqSEQUENCE SETASELECT pg_catalog.setval('"public"."searchs_id_seq"', 40, true);
+public subscriptions
+TABLE DATAgCOPY "public"."subscriptions" ("id", "user_id", "customer_id", "created_at", "updated_at") FROM stdin;
+public subscriptions_id_seqSEQUENCE SETGSELECT pg_catalog.setval('"public"."subscriptions_id_seq"', 78, true);
+public themes
+TABLE DATAlCOPY "public"."themes" ("id", "original_id", "category_id", "name", "created_at", "updated_at") FROM stdin;
+public themes_id_seqSEQUENCE SET@SELECT pg_catalog.setval('"public"."themes_id_seq"', 47, true);
+public users
+TABLE DATAbCOPY "public"."users" ("id", "email", "name", "omniauth", "created_at", "updated_at") FROM stdin;
+public users_id_seqSEQUENCE SET@SELECT pg_catalog.setval('"public"."users_id_seq"', 933, true);
+public 1visits
+TABLE DATA_COPY "public"."visits" ("id", "user_id", "funding_id", "created_at", "updated_at") FROM stdin;
+public visits_id_seqSEQUENCE SETBSELECT pg_catalog.setval('"public"."visits_id_seq"', 1311, true);
+public 
+fundings_pkey
+CONSTRAINT\ALTER TABLE ONLY "public"."fundings"
+    ADD CONSTRAINT "fundings_pkey" PRIMARY KEY ("id");
+FALTER TABLE ONLY "public"."fundings" DROP CONSTRAINT "fundings_pkey";
+public schema_migrations_pkey
+CONSTRAINTtALTER TABLE ONLY "public"."schema_migrations"
+    ADD CONSTRAINT "schema_migrations_pkey" PRIMARY KEY ("filename");
+XALTER TABLE ONLY "public"."schema_migrations" DROP CONSTRAINT "schema_migrations_pkey";
+public searchs_pkey
+CONSTRAINTZALTER TABLE ONLY "public"."searchs"
+    ADD CONSTRAINT "searchs_pkey" PRIMARY KEY ("id");
+DALTER TABLE ONLY "public"."searchs" DROP CONSTRAINT "searchs_pkey";
+public subscriptions_pkey
+CONSTRAINTfALTER TABLE ONLY "public"."subscriptions"
+    ADD CONSTRAINT "subscriptions_pkey" PRIMARY KEY ("id");
+PALTER TABLE ONLY "public"."subscriptions" DROP CONSTRAINT "subscriptions_pkey";
+public themes_pkey
+CONSTRAINTXALTER TABLE ONLY "public"."themes"
+    ADD CONSTRAINT "themes_pkey" PRIMARY KEY ("id");
+BALTER TABLE ONLY "public"."themes" DROP CONSTRAINT "themes_pkey";
+public 
+users_pkey
+CONSTRAINTVALTER TABLE ONLY "public"."users"
+    ADD CONSTRAINT "users_pkey" PRIMARY KEY ("id");
+@ALTER TABLE ONLY "public"."users" DROP CONSTRAINT "users_pkey";
+public visits_pkey
+CONSTRAINTXALTER TABLE ONLY "public"."visits"
+    ADD CONSTRAINT "visits_pkey" PRIMARY KEY ("id");
+BALTER TABLE ONLY "public"."visits" DROP CONSTRAINT "visits_pkey";
+public searchs_user_id_fkey
+FK CONSTRAINT›ALTER TABLE ONLY "public"."searchs"
+    ADD CONSTRAINT "searchs_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE CASCADE;
+LALTER TABLE ONLY "public"."searchs" DROP CONSTRAINT "searchs_user_id_fkey";
+public subscriptions_user_id_fkey
+FK CONSTRAINT§ALTER TABLE ONLY "public"."subscriptions"
+    ADD CONSTRAINT "subscriptions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE CASCADE;
+XALTER TABLE ONLY "public"."subscriptions" DROP CONSTRAINT "subscriptions_user_id_fkey";
+public visits_funding_id_fkey
+FK CONSTRAINT¢ALTER TABLE ONLY "public"."visits"
+    ADD CONSTRAINT "visits_funding_id_fkey" FOREIGN KEY ("funding_id") REFERENCES "public"."fundings"("id") ON DELETE CASCADE;
+MALTER TABLE ONLY "public"."visits" DROP CONSTRAINT "visits_funding_id_fkey";
+public visits_user_id_fkey
+FK CONSTRAINT™ALTER TABLE ONLY "public"."visits"
+    ADD CONSTRAINT "visits_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE CASCADE;
+ALTER TABLE ONLY "public"."visits" DROP CONSTRAINT "visits_user_id_fkey";
