@@ -12,19 +12,14 @@ Class Modele_Register extends BDD{
 //insert into users(email, name, created_at, updated_at) values('email', 'name', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 
 	public function registerDB(){
-		if ((isset($_POST['id']) && isset($_POST['mdp'])) && $_POST['mdpconf'] == $_POST['mdp']) {
+		if ((isset($_POST['lastname']) && isset($_POST['firstname']) && isset($_POST['mail']) && isset($_POST['fonction']) && isset($_POST['mdp']) && isset($_POST['mdpconf'])
+		&& isset($_POST['organisationname']) && isset($_POST['typeorganisation'])&& isset($_POST['adress'])
+		&& isset($_POST['postalcode']) && isset($_POST['town'])) && $_POST['mdpconf'] == $_POST['mdp']) {
 
-			$username = $_POST['id'];
-			$password = crypt($_POST['mdp'], "hashefacile");
+			$password = crypt($_POST['mdp'], "hashfacile");
 
-			$req = pg_query(self::$DBH, "insert into users(email, name, created_at, updated_at, password) values('".$_POST['id']."', 'name2', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'".$password."');");
-
-			$req = pg_query(self::$DBH,"select * from users where email='".$_POST['id']."';");
-
-			while ($row = pg_fetch_row($req)) {
-			  echo "email: $row[1]  password: $row[7]";
-			  echo "<br />\n";
-			}
+			$req = pg_query(self::$DBH, "insert into users(email, name, created_at, updated_at, first_name, type_organisation, password, fonction_user, adresse, ville, postal) 
+			values('".$_POST['mail']."', '".$_POST['lastname']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '".$_POST['firstname']."', '".$_POST['typeorganisation']."', '".$password."', '".$_POST['fonction']."', '".$_POST['adress']."', '".$_POST['town']."', '".$_POST['postalcode']."');");
 
 			/*if ($req == true) {
 				$req1 = self::$DBH -> prepare ("select idUtilisateur from Identification where adresseMail=?");
