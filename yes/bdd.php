@@ -9,7 +9,7 @@ Class BDD{
   //       );
 
 		try {
-			self::$DBH = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password="");
+			self::$DBH = pg_connect("host=localhost port= dbname= user= password="");
  		} catch (PDOException $e) {
    			echo 'Connexion échouée : ' . $e->getMessage();
 		}
