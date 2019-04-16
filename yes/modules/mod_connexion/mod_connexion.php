@@ -12,11 +12,11 @@ class ModConnexion {
 		if(isset($_GET['action'])){
 			$action = htmlspecialchars($_GET['action']);
 		}else{
-			$action = "bienvenue";
+			$action = "welcome";
 		}
 
 		switch($action){
-			case "bienvenue" :
+			case "welcome" :
 				$this -> controleur -> connexion();
 				break;
 

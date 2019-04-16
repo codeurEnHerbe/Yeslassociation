@@ -22,6 +22,9 @@ Class Modele_Connexion extends BDD{
 			  echo "E-mail ou mot de passe éronné";
 			}else{
 				echo "Connecté";
+				$row = pg_fetch_assoc($req);
+				$_SESSION['login']= $row['id'];
+				echo $_SESSION['login'];
 			}
 
 			/*if ($req == true) {

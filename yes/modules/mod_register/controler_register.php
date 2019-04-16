@@ -19,7 +19,7 @@ Class Controleur_Register{
 
    public function registerDB(){
    		$this -> modele -> registerDB();
-         header('Location: index.php');
+        // header('Location: index.php');
    }
 
 }
