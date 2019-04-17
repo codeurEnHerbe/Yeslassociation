@@ -1,8 +1,10 @@
 <?php
+	session_start();
 	include_once 'bdd.php';
 	include_once 'modules/mod_register/mod_register.php';
 	include_once 'modules/mod_connexion/mod_connexion.php';
 	include_once 'modules/mod_search/mod_search.php';
+	BDD::connexion();
 
 	$m = new ModRegister();
 	echo "<br/><br/>
@@ -18,8 +20,6 @@
 
 	switch($module){
 		case "welcome" :
-			session_start();
-			BDD::connexion();
 			echo"<form method='post' action='index.php?module=search' id='connect'>
 				<input type='submit' value='Search' />
 			</form>";

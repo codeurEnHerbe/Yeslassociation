@@ -12,7 +12,7 @@ Class Controleur_Search{
 	}
 
    public function showSearch() {
-      $this -> vue -> showSearch();
+      $this -> vue -> showSearch($this -> modele -> getCategories());
       //header('Location: index.php');
    }
 }
