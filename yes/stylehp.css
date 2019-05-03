@@ -1,0 +1,79 @@
+body{
+	margin: 0 auto;
+	width : 1300px;
+}
+#mainFrame{
+	width : 100%;
+	display : flex;
+}
+
+#research{
+	width :100%;
+	border : 2px solid blue;
+	padding-right : 16px;
+}
+
+#yeslogo{
+}
+
+#nav{
+	height : 65px;
+	padding-top:20px;
+}
+
+#researchNav{
+	margin-top : 5px;
+	margin-bottom : 10px;
+	height : 40px;
+}
+
+#adherezButton{
+	background-color : #67B9A8;
+}
+
+#adherezButton a{
+	color : white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display : flex;
+  height :100%;
+}
+
+li {
+	margin:0 auto;
+	width:100%;
+}
+
+li a {
+  transition: color 0.5s ease;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  font-weight : bold;
+  text-decoration : none;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  color : #67B9A8;
+}
+
+h1{
+	font-size:2.5em;
+	margin-top:40px;
+	margin-left:16px;
+}
+
+h2{
+	font-weight:normal;
+	margin-top:40px;
+	margin-left:16px;
+}
